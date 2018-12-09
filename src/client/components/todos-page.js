@@ -61,6 +61,7 @@ class TodosPage extends React.Component {
    */
   addTodo(text) {
     if (!text) {
+      alert("Content can not be blank")
       return;
     }
 

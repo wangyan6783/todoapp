@@ -10,8 +10,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 var todos = [
-  {"id": 1, "text": "Hello, world!"},
-  {"id": 2, "text": "Pick up groceries", "status": "complete"}
+  {id: 1, text: "Hello, world!"},
+  {id: 2, text: "Pick up groceries", status: "complete"}
 ];
 
 app.get('/', function(req, res) {
@@ -21,7 +21,7 @@ app.get('/', function(req, res) {
 });
 
 app.get('/todos', function(req, res) {
-  res.json(JSON.stringify(todos));
+  res.json(todos);
 });
 
 app.get('/todos/:id', function(req, res) {
@@ -30,28 +30,27 @@ app.get('/todos/:id', function(req, res) {
     return todo.id === id;
   });
 
-  res.json(JSON.stringify(todos[index]));
+  res.json(todos[index]);
 });
 
 app.post('/todos', function(req, res) {
   var text = req.body.data.text;
   if (!text) {
-    return res.status(400).json({"message": "text is required"});
+    return res.status(400).json({message: "text is required"});
   }
 
   var id = todos.length + 1;
-  var newTodo = { "id": id, "text": text, "status": "active" };
+  var newTodo = { id: id, text: text, status: "active" };
   todos.push(newTodo);
-
   res.json(todos);
 });
 
 app.delete('/todos/:id', function(req, res) {
-  res.status(500).send({"message": "not implemented"});
+  res.status(500).send({message: "not implemented"});
 });
 
 app.put('/todos/:id', function(req, res) {
-  res.status(500).send({"message": "not implemented"});
+  res.status(500).send({message: "not implemented"});
 });
 
 // Node server.

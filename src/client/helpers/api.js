@@ -10,7 +10,7 @@ export function api(method, data, cb) {
 
   promise.then(json => {
     if (typeof cb === 'function') {
-      cb(json);
+      typeof json === "string" ? cb(JSON.parse(json)) : cb(json);
     }
   })
   .catch(err => {
@@ -50,7 +50,6 @@ export function getApiPromise(method, data) {
     if (response.status >= 400) {
       return response.json().then(err => Promise.reject(err.message));
     }
-
     return response.json();
   })
 };
