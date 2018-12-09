@@ -1,21 +1,22 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var path = require('path');
+let express = require('express');
+let bodyParser = require('body-parser');
+let path = require('path');
+let uniqid = require('uniqid');
 
-var app = express();
+let app = express();
 app.set('views', path.resolve('src', 'server', 'views'));
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-var todos = [
-  {id: 1, text: "Hello, world!"},
-  {id: 2, text: "Pick up groceries", status: "complete"}
+let todos = [
+  {id: uniqid(), text: "Hello, world!"},
+  {id: uniqid(), text: "Pick up groceries", status: "complete"}
 ];
 
 app.get('/', function(req, res) {
-  var bundle = `//${req.hostname}:8080/public/bundle.js`;
+  let bundle = `//${req.hostname}:8080/public/bundle.js`;
 
   res.render('index', {bundle});
 });
@@ -25,28 +26,32 @@ app.get('/todos', function(req, res) {
 });
 
 app.get('/todos/:id', function(req, res) {
-  var id = req.params.id;
-  var index = todos.findIndex(function(todo) {
+  let id = req.params.id;
+  let todo = todos.filter(function(todo) {
     return todo.id === id;
-  });
+  })
 
-  res.json(todos[index]);
+  res.json(todo);
 });
 
 app.post('/todos', function(req, res) {
-  var text = req.body.data.text;
+  let text = req.body.data.text;
   if (!text) {
     return res.status(400).json({message: "text is required"});
   }
 
-  var id = todos.length + 1;
-  var newTodo = { id: id, text: text, status: "active" };
+  let id = uniqid();
+  let newTodo = { id: id, text: text, status: "active" };
   todos.push(newTodo);
-  res.json(todos);
+  res.json(newTodo);
 });
 
 app.delete('/todos/:id', function(req, res) {
-  res.status(500).send({message: "not implemented"});
+  let id = req.body.data.id;
+  todos = todos.filter(function(todo) {
+    return todo.id !== id
+  })
+  res.json(id)
 });
 
 app.put('/todos/:id', function(req, res) {
@@ -54,13 +59,13 @@ app.put('/todos/:id', function(req, res) {
 });
 
 // Node server.
-var port = 3000;
-var server = app.listen(port, function() {
+let port = 3000;
+let server = app.listen(port, function() {
   console.log('SERVER STARTED LISTENING ON PORT ' + port);
 });
 
 // Dev server.
-var devServer = require('../../tools/development-server');
-var devPort = 8080;
+let devServer = require('../../tools/development-server');
+let devPort = 8080;
 
 devServer.listen(devPort, '0.0.0.0', () => {});

@@ -10,7 +10,7 @@ export function api(method, data, cb) {
 
   promise.then(json => {
     if (typeof cb === 'function') {
-      typeof json === "string" ? cb(JSON.parse(json)) : cb(json);
+      cb(json);
     }
   })
   .catch(err => {

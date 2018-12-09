@@ -75,7 +75,7 @@ class TodosPage extends React.Component {
    */
   postTodo(json) {
     this.setState({
-      todos: [...json],
+      todos: [...this.state.todos, json]
     });
   }
 
