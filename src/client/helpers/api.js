@@ -35,6 +35,9 @@ export function getApiPromise(method, data) {
   } else if (method === 'ARCHIVETASK') {
     url += `/archive/${data}}`;
     method = 'PUT';
+  } else if (method === 'ARCHIVEALL') {
+    url += '/archiveall';
+    method = 'PUT';
   }
 
   const options = {

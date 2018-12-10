@@ -47,6 +47,7 @@ class TodosPage extends React.Component {
     this.updateTodos = this.updateTodos.bind(this);
     this.completeAllTasks = this.completeAllTasks.bind(this);
     this.archiveTask = this.archiveTask.bind(this);
+    this.archiveAllCompleted = this.archiveAllCompleted.bind(this);
   }
 
   /**
@@ -114,6 +115,10 @@ class TodosPage extends React.Component {
     api('ARCHIVETASK', id, this.updateTodos);
   }
 
+  archiveAllCompleted() {
+  api('ARCHIVEALL', null, this.updateTodos);
+}
+
   /**
    * Render
    * @returns {ReactElement}
@@ -121,7 +126,7 @@ class TodosPage extends React.Component {
   render() {
     return (
       <div className={this.baseCls}>
-        <Navbar filterBy={this.state.filterBy} onClickFilter={this.setFilterBy} />
+        <Navbar filterBy={this.state.filterBy} onClickFilter={this.setFilterBy} archiveAllCompleted={this.archiveAllCompleted} />
         <p>{this.activeTasks()}</p>
         <button onClick={this.completeAllTasks}>Complete All</button>
         <TodoForm onSubmit={this.addTodo} />

@@ -75,6 +75,16 @@ app.put('/todos/archive/:id', function(req, res) {
   res.json(newTodos);
 })
 
+// archive all completed tasks
+app.put('/todos/archiveall', function(req, res) {
+  todos.map(todo => {
+    if (todo.status === "complete") {
+      todo.archive = true;
+    }
+  })
+  res.json(todos);
+})
+
 app.put('/todos/:id', function(req, res) {
   let targetTodo = req.body.data;
   let index = todos.findIndex(todo => {

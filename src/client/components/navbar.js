@@ -25,7 +25,7 @@ const defaultProps = {
  * Navbar component
  * @returns {ReactElement}
  */
-const Navbar = ({ filterBy, onClickFilter }) => {
+const Navbar = ({ filterBy, onClickFilter, archiveAllCompleted }) => {
   /**
    * Base CSS class
    */
@@ -68,6 +68,7 @@ const Navbar = ({ filterBy, onClickFilter }) => {
       >
         Archived
       </span>
+      <button onClick={archiveAllCompleted}>Archive all completed</button>
     </div>
   );
 }
