@@ -45,6 +45,7 @@ class TodosPage extends React.Component {
     this.postTodo = this.postTodo.bind(this);
     this.setFilterBy = this.setFilterBy.bind(this);
     this.updateTodos = this.updateTodos.bind(this);
+    this.completeAllTasks = this.completeAllTasks.bind(this);
   }
 
   /**
@@ -104,6 +105,10 @@ class TodosPage extends React.Component {
     return numOfTasks < 2 ? `${numOfTasks} task remaining` : `${numOfTasks} tasks remaining`
   }
 
+  completeAllTasks() {
+    api('COMPLETEALL', null, this.updateTodos);
+  }
+
   /**
    * Render
    * @returns {ReactElement}
@@ -113,7 +118,7 @@ class TodosPage extends React.Component {
       <div className={this.baseCls}>
         <Navbar filterBy={this.state.filterBy} onClickFilter={this.setFilterBy} />
         <p>{this.activeTasks()}</p>
-        <button>Complete All</button>
+        <button onClick={this.completeAllTasks}>Complete All</button>
         <TodoForm onSubmit={this.addTodo} />
 
         <Todos

@@ -54,12 +54,24 @@ app.delete('/todos/:id', function(req, res) {
   res.json(targetTodo);
 });
 
+// Update complete all tasks
+app.put('/completeall', function(req, res) {
+  todos.map(function(todo) {
+    todo.status = "complete";
+  });
+  res.json(todos);
+})
+
 app.put('/todos/:id', function(req, res) {
   let targetTodo = req.body.data;
-  todos = todos.filter(function(todo) {
-    return todo.id !== targetTodo.id
+  let index = todos.findIndex(todo => {
+    return todo.id === targetTodo.id;
   });
-  todos.push(targetTodo);
+  todos = [
+    ...todos.slice(0, index),
+    targetTodo,
+    ...todos.slice(index + 1),
+  ]
   res.json(targetTodo);
 });
 

@@ -29,6 +29,9 @@ export function getApiPromise(method, data) {
   let url = 'http://localhost:3000/todos';
   if (['DELETE', 'PUT'].indexOf(method) !== -1) {
     url += `/${data.id}`;
+  } else if (method === "COMPLETEALL") {
+    url = 'http://localhost:3000/completeall';
+    method = 'PUT';
   }
 
   const options = {
