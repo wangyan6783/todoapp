@@ -1,4 +1,13 @@
 // Header module
 .header {
   background-color: map-get($colors, primary);
+  h1 {
+    font-size: 50px;
+    font-weight: lighter;
+    text-decoration: none;
+    letter-spacing: 2px;
+    color: map-get($colors, ui-light);
+    display: block;
+    margin-left: 50px;
+  }
 }
