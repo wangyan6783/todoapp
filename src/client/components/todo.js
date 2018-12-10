@@ -33,7 +33,7 @@ const defaultProps = {
  * Todo component
  * @returns {ReactElement}
  */
-const Todo = ({ filtered, onClickDelete, onClickTodo, status, text }) => {
+const Todo = ({ filtered, onClickDelete, onClickTodo, status, text, id, archive, archiveTask }) => {
   /**
    * Base CSS class
    */
@@ -45,10 +45,17 @@ const Todo = ({ filtered, onClickDelete, onClickTodo, status, text }) => {
 
   const checkedStatus = status === 'complete' ? true : false;
 
+  const renderArchiveBtn = () => {
+    if (status === 'complete' && !archive) {
+      return <button onClick={e => archiveTask(id)}>archive</button>
+    }
+  }
+
   return (
     <li className={todoCls}>
       <input type="checkbox" onChange={onClickTodo} checked={checkedStatus}/>
       <TodoLink text={text} onClick={onClickTodo} />
+      {renderArchiveBtn()}
       <Button text="Delete" onClick={onClickDelete} />
     </li>
   );

@@ -29,7 +29,7 @@ const defaultProps = {
  * Todos component
  * @returns {ReactElement}
  */
-const Todos = ({ filterBy, todos, updateTodos }) => {
+const Todos = ({ filterBy, todos, updateTodos, archiveTask }) => {
   /**
    * Base CSS class
    */
@@ -95,17 +95,21 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
    * @returns {Array} - Returns an array of Todo React Elements
    */
   const renderTodos = () => {
+
     return todos.map(todo => {
-      let filtered;
-      switch (filterBy) {
-        case 'active':
-          filtered = todo.status === 'complete';
-          break;
-        case 'completed':
-          filtered = todo.status !== 'complete';
-          break;
-        default:
-          filtered = false;
+      let filtered = true;
+
+      if (!filterBy && !todo.archive) {
+        filtered = false;
+      }
+      if (filterBy === 'active' && todo.status === 'active') {
+        filtered = false;
+      }
+      if (filterBy === 'completed' && todo.status === 'complete' && !todo.archive) {
+        filtered = false;
+      }
+      if (filterBy === 'archived' && todo.archive) {
+        filtered = false;
       }
 
       return (
@@ -116,7 +120,10 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
           onClickTodo={onClickTodo.bind(this, todo)}
           status={todo.status}
           text={todo.text}
-        />
+          id={todo.id}
+          archive={todo.archive}
+          archiveTask={archiveTask}
+          />
       );
     })
   }

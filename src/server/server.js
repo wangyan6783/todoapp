@@ -11,8 +11,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 let todos = [
-  {id: uniqid(), text: "Hello, world!"},
-  {id: uniqid(), text: "Pick up groceries", status: "complete"}
+  {id: uniqid(), text: "Hello, world!", status: "active", archive: false},
+  {id: uniqid(), text: "Pick up groceries", status: "complete", archive: true}
 ];
 
 app.get('/', function(req, res) {
@@ -41,7 +41,7 @@ app.post('/todos', function(req, res) {
   }
 
   let id = uniqid();
-  let newTodo = { id: id, text: text, status: "active" };
+  let newTodo = { id: id, text: text, status: "active", archive: false };
   todos.push(newTodo);
   res.json(newTodo);
 });
@@ -54,12 +54,25 @@ app.delete('/todos/:id', function(req, res) {
   res.json(targetTodo);
 });
 
-// Update complete all tasks
-app.put('/completeall', function(req, res) {
+
+// complete all tasks
+app.put('/todos/completeall', function(req, res) {
   todos.map(function(todo) {
     todo.status = "complete";
   });
   res.json(todos);
+})
+
+// archive a particular task
+app.put('/todos/archive/:id', function(req, res) {
+  let id = req.body.data;
+  let newTodos = todos.map(todo => {
+    if (todo.id === id) {
+      todo.archive = true;
+    }
+    return todo;
+  })
+  res.json(newTodos);
 })
 
 app.put('/todos/:id', function(req, res) {

@@ -46,6 +46,7 @@ class TodosPage extends React.Component {
     this.setFilterBy = this.setFilterBy.bind(this);
     this.updateTodos = this.updateTodos.bind(this);
     this.completeAllTasks = this.completeAllTasks.bind(this);
+    this.archiveTask = this.archiveTask.bind(this);
   }
 
   /**
@@ -109,6 +110,10 @@ class TodosPage extends React.Component {
     api('COMPLETEALL', null, this.updateTodos);
   }
 
+  archiveTask(id) {
+    api('ARCHIVETASK', id, this.updateTodos);
+  }
+
   /**
    * Render
    * @returns {ReactElement}
@@ -125,6 +130,7 @@ class TodosPage extends React.Component {
           filterBy={this.state.filterBy}
           todos={this.state.todos}
           updateTodos={this.updateTodos}
+          archiveTask={this.archiveTask}
         />
       </div>
     );

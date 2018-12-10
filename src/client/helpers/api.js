@@ -29,8 +29,11 @@ export function getApiPromise(method, data) {
   let url = 'http://localhost:3000/todos';
   if (['DELETE', 'PUT'].indexOf(method) !== -1) {
     url += `/${data.id}`;
-  } else if (method === "COMPLETEALL") {
-    url = 'http://localhost:3000/completeall';
+  } else if (method === 'COMPLETEALL') {
+    url += '/completeall';
+    method = 'PUT';
+  } else if (method === 'ARCHIVETASK') {
+    url += `/archive/${data}}`;
     method = 'PUT';
   }
 
