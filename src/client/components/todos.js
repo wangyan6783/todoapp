@@ -42,7 +42,7 @@ const Todos = ({ filterBy, todos, updateTodos }) => {
    */
   const deleteTodo = json => {
     updateTodos(todos.filter(function(todo){
-      return todo.id !== json;
+      return todo.id !== json.id;
     }))
   }
 

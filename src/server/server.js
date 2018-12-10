@@ -47,15 +47,20 @@ app.post('/todos', function(req, res) {
 });
 
 app.delete('/todos/:id', function(req, res) {
-  let id = req.body.data.id;
+  let targetTodo = req.body.data;
   todos = todos.filter(function(todo) {
-    return todo.id !== id
+    return todo.id !== targetTodo.id
   })
-  res.json(id)
+  res.json(targetTodo);
 });
 
 app.put('/todos/:id', function(req, res) {
-  res.status(500).send({message: "not implemented"});
+  let targetTodo = req.body.data;
+  todos = todos.filter(function(todo) {
+    return todo.id !== targetTodo.id
+  });
+  todos.push(targetTodo);
+  res.json(targetTodo);
 });
 
 // Node server.
