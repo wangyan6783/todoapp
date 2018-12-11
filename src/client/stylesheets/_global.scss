@@ -24,3 +24,9 @@ body {
 .display-none {
   display: none !important;
 }
+
+button {
+  color: map-get($colors, ui-light);
+  background: map-get($colors, green);
+  border-radius: 5px;
+}

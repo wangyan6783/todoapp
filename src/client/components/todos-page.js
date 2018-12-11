@@ -127,8 +127,10 @@ class TodosPage extends React.Component {
     return (
       <div className={this.baseCls}>
         <Navbar filterBy={this.state.filterBy} onClickFilter={this.setFilterBy} archiveAllCompleted={this.archiveAllCompleted} />
-        <p>{this.activeTasks()}</p>
-        <Button text="Complete All" onClick={this.completeAllTasks} />
+        <div className="task-remaining">
+          <p>{this.activeTasks()}</p>
+          <Button onClick={this.completeAllTasks} text="Complete All" />
+        </div>
         <TodoForm onSubmit={this.addTodo} />
         <Todos
           filterBy={this.state.filterBy}

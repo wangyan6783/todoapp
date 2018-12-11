@@ -5,3 +5,12 @@ ul,
   margin: 0;
   padding: 0;
 }
+
+.task-remaining {
+  margin-left: 55px;
+  p {
+    display: inline-block;
+    color: map-get($colors, darkgray);
+    margin-right: 20px;
+  }
+}
