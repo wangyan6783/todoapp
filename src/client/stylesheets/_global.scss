@@ -29,5 +29,6 @@ button {
   color: map-get($colors, ui-light);
   background: map-get($colors, green);
   border-radius: 5px;
+  padding: 3px 13px;
   cursor: pointer;
 }

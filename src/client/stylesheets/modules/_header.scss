@@ -1,6 +1,9 @@
 // Header module
 .header {
   background-color: map-get($colors, primary);
+  margin: -35px;
+  padding: 18px;
+  width: 100%;
   h1 {
     font-size: 50px;
     font-weight: lighter;
@@ -8,6 +11,6 @@
     letter-spacing: 2px;
     color: map-get($colors, ui-light);
     display: block;
-    margin-left: 50px;
+    margin-left: 82px;
   }
 }
