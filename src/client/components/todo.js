@@ -47,7 +47,7 @@ const Todo = ({ filtered, onClickDelete, onClickTodo, status, text, id, archive,
 
   const renderArchiveBtn = () => {
     if (status === 'complete' && !archive) {
-      return <button onClick={e => archiveTask(id)}>archive</button>
+      return <Button className="archive-btn" text="archive" onClick={e => archiveTask(id)} />
     }
   }
 
@@ -55,8 +55,8 @@ const Todo = ({ filtered, onClickDelete, onClickTodo, status, text, id, archive,
     <li className={todoCls}>
       <input type="checkbox" onChange={onClickTodo} checked={checkedStatus}/>
       <TodoLink text={text} onClick={onClickTodo} />
-      {renderArchiveBtn()}
-      <Button text="Delete" onClick={onClickDelete} />
+        {renderArchiveBtn()}
+        <Button className="delete-btn" text="Delete" onClick={onClickDelete} />
     </li>
   );
 }

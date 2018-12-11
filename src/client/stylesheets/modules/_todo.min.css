@@ -1,0 +1,1 @@
+.todo{cursor:pointer}.todo--status-complete{text-decoration:line-through}.todo--filtered{display:none}ul{position:relative;width:500px;margin:30px auto 0;padding:10px}li input{display:none}li .todo-link{display:inline-block}li button{display:inline-block}

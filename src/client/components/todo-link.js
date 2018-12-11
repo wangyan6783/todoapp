@@ -31,9 +31,9 @@ const TodoLink = ({ text, onClick }) => {
   const baseCls = 'todo-link';
 
   return (
-    <div className={baseCls} onClick={onClick}>
+    <span className={baseCls} onClick={onClick}>
       {text}
-    </div>
+    </span>
   );
 };
 

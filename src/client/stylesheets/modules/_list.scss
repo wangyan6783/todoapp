@@ -15,7 +15,7 @@ ul,
   }
 }
 
-input {
+.add-todo-input {
   font-size: 20px;
   border: 2px solid map-get($colors, lightgray);
   border-radius: 5px;

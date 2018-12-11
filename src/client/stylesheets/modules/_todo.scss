@@ -1,12 +1,29 @@
 // Todo module.
 .todo {
   cursor: pointer;
+  color: map-get($colors, darkgray);
+  font-size: 25px;
 
   &--status-complete {
     text-decoration: line-through;
+    color: map-get($colors, gray);
   }
 
   &--filtered {
     display: none;
   }
+}
+
+ul {
+  position: relative;
+  width: 500px;
+  margin: 30px auto 0;
+  padding: 10px;
+}
+
+li {
+  input{
+    display: inline;
+  }
+
 }
