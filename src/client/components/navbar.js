@@ -42,36 +42,38 @@ const Navbar = ({ filterBy, onClickFilter, archiveAllCompleted }) => {
 
   return (
     <div className={baseCls}>
-      <Link
-        to="/"
-        activeClassName={`${baseCls}__item--active`}
-        className={`${baseCls}__item`}
-        onClick={() => onClickFilter('')}
-      >
-        All
-      </Link>
-      <Link
-        to="/active"
-        className={activeLinkCls}
-        onClick={() => onClickFilter('active')}
-      >
-        Active
-      </Link>
-      <Link
-        to="/completed"
-        className={completedLinkCls}
-        onClick={() => onClickFilter('completed')}
-      >
-        Completed
-      </Link>
-      <Link
-        to="/archived"
-        className={archivedLinkCls}
-        onClick={() => onClickFilter('archived')}
-      >
-        Archived
-      </Link>
-      <button onClick={archiveAllCompleted}>Archive all completed</button>
+      <div className="nav-text-wrapper">
+        <Link
+          to="/"
+          activeClassName={`${baseCls}__item--active`}
+          className={`${baseCls}__item`}
+          onClick={() => onClickFilter('')}
+        >
+          All
+        </Link>
+        <Link
+          to="/active"
+          className={activeLinkCls}
+          onClick={() => onClickFilter('active')}
+        >
+          Active
+        </Link>
+        <Link
+          to="/completed"
+          className={completedLinkCls}
+          onClick={() => onClickFilter('completed')}
+        >
+          Completed
+        </Link>
+        <Link
+          to="/archived"
+          className={archivedLinkCls}
+          onClick={() => onClickFilter('archived')}
+        >
+          Archived
+        </Link>
+        <button onClick={archiveAllCompleted}>Archive all completed</button>
+      </div>
     </div>
   );
 }

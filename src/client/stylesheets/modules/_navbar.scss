@@ -1,10 +1,28 @@
 // Navbar module
 .navbar {
+  background-color: map-get($colors, lightgray);
+
+  .nav-text-wrapper {
+    margin-left: 35px;
+  }
+
   &__item {
     text-decoration: none;
+    color: map-get($colors, gray);
+    margin: 0 20px;
   }
 
   &__item--active {
     font-weight: 700;
+    color: map-get($colors, darkgray);
+  }
+
+  button {
+    color: map-get($colors, ui-light);
+    background: map-get($colors, green);
+    border-radius: 5px;
+    float:right;
+    padding: 2px;
+    margin-right: 30px;
   }
 }
