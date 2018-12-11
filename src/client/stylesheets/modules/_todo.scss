@@ -15,15 +15,15 @@
 }
 
 ul {
-  position: relative;
-  width: 500px;
+  width: 80%;
   margin: 30px auto 0;
   padding: 10px;
 }
 
 li {
-  input{
-    display: inline;
-  }
-
+  display: grid;
+  grid-template-columns: 10% 66% 12% 12%;
+  column-gap: 3px;
+  padding: 10px 20px;
+  margin: 5px 0;
 }

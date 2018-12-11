@@ -47,7 +47,7 @@ const Todo = ({ filtered, onClickDelete, onClickTodo, status, text, id, archive,
 
   const renderArchiveBtn = () => {
     if (status === 'complete' && !archive) {
-      return <Button className="archive-btn" text="archive" onClick={e => archiveTask(id)} />
+      return <Button className="archive-btn" text="Archive" onClick={e => archiveTask(id)} />
     }
   }
 
