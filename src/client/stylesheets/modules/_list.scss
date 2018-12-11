@@ -23,4 +23,10 @@ ul,
   width: 55%;
   margin-left: 23%;
   margin-top: 5%;
+  color: map-get($colors, darkgray);
+
+}
+
+.add-todo-input::placeholder {
+  color: map-get($colors, gray);
 }
