@@ -15,12 +15,6 @@ let todos = [
   {id: uniqid(), text: "Pick up groceries", status: "complete", archive: true}
 ];
 
-app.get('/', function(req, res) {
-  let bundle = `//${req.hostname}:8080/public/bundle.js`;
-
-  res.render('index', {bundle});
-});
-
 app.get('/todos', function(req, res) {
   res.json(todos);
 });
@@ -32,6 +26,12 @@ app.get('/todos/:id', function(req, res) {
   })
 
   res.json(todo);
+});
+
+app.get('/*', function(req, res) {
+  let bundle = `//${req.hostname}:8080/public/bundle.js`;
+
+  res.render('index', {bundle});
 });
 
 app.post('/todos', function(req, res) {
