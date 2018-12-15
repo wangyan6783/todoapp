@@ -18,11 +18,11 @@ class TodoForm extends React.Component {
    * @static
    */
   static propTypes = {
-    onSubmit: React.PropTypes.func,
+    addTodo: React.PropTypes.func,
   };
 
   static defaultProps = {
-    onSubmit: noop,
+    addTodo: noop,
   };
 
   /**
@@ -35,7 +35,7 @@ class TodoForm extends React.Component {
     this.state = { input: '' };
 
     this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+    this.addTodo = this.addTodo.bind(this);
   }
 
   /**
@@ -52,10 +52,10 @@ class TodoForm extends React.Component {
    * On submit handler for submitting form
    * @param  {object} e - Event object
    */
-  onSubmit(e) {
+  addTodo(e) {
     e.preventDefault();
 
-    this.props.onSubmit(this.state.input);
+    this.props.addTodo(this.state.input);
 
     this.setState({ input: '' });
   }
@@ -66,7 +66,7 @@ class TodoForm extends React.Component {
    */
   render() {
     return (
-      <form onSubmit={this.onSubmit}>
+      <form onSubmit={this.addTodo}>
         <input
           className="add-todo-input"
           onChange={this.onChange}

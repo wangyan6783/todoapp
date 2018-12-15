@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router';
 
 import { api, getApiPromise } from '../helpers/api';
-import Button from './button';
 import Navbar from './navbar';
+import TodoRemaining from './todo-remaining';
 import TodoForm from './todo-form';
 import TodoLink from './todo-link';
 import Todos from './todos';
@@ -25,6 +25,10 @@ class TodosPage extends React.Component {
    */
   static propTypes = {
     params: React.PropTypes.object,
+  };
+
+  static defaultProps = {
+    params: {},
   };
 
   /**
@@ -64,7 +68,7 @@ class TodosPage extends React.Component {
    */
   addTodo(text) {
     if (!text) {
-      alert("Content can not be blank")
+      alert("Content can not be blank");
       return;
     }
 
@@ -127,11 +131,8 @@ class TodosPage extends React.Component {
     return (
       <div className={this.baseCls}>
         <Navbar filterBy={this.state.filterBy} onClickFilter={this.setFilterBy} archiveAllCompleted={this.archiveAllCompleted} />
-        <div className="task-remaining">
-          <p>{this.activeTasks()}</p>
-          <Button onClick={this.completeAllTasks} text="Complete All" />
-        </div>
-        <TodoForm onSubmit={this.addTodo} />
+        <TodoRemaining activeTasks={this.activeTasks()} completeAllTasks={this.completeAllTasks}/>
+        <TodoForm addTodo={this.addTodo} />
         <Todos
           filterBy={this.state.filterBy}
           todos={this.state.todos}
@@ -144,5 +145,3 @@ class TodosPage extends React.Component {
 }
 
 export default TodosPage;
-
-// <button onClick={this.completeAllTasks}>Complete All</button>

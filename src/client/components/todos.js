@@ -13,6 +13,7 @@ const propTypes = {
   filterBy: React.PropTypes.string,
   todos: React.PropTypes.arrayOf(React.PropTypes.object),
   updateTodos: React.PropTypes.func,
+  archiveTask: React.PropTypes.func,
 };
 
 /**
@@ -23,6 +24,7 @@ const defaultProps = {
   filterBy: '',
   todos: [],
   updateTodos: noop,
+  archiveTask: noop,
 };
 
 /**

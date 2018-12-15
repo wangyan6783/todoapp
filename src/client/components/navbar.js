@@ -10,6 +10,7 @@ const noop = () => {};
 const propTypes = {
   filterBy: React.PropTypes.string,
   onClickFilter: React.PropTypes.func,
+  archiveAllCompleted: React.PropTypes.func,
 };
 
 /**
@@ -19,6 +20,7 @@ const propTypes = {
 const defaultProps = {
   filterBy: '',
   onClickFilter: noop,
+  archiveAllCompleted: noop,
 };
 
 /**
