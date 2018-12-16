@@ -62,8 +62,8 @@ const Todo = ({ filtered, onClickDelete, onClickTodo, status, text, id, archive,
       <input type="checkbox" onChange={onClickTodo} checked={checkedStatus}/>
       <TodoLink text={text} onClick={onClickTodo} />
         {renderArchiveBtn()}
-        <Button className="delete-btn" text="Delete" onClick={onClickDelete} />
-    </li>
+      <Button className="delete-btn" text="Delete" onClick={onClickDelete} />
+  </li>
   );
 }
 

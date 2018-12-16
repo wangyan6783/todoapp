@@ -12,5 +12,9 @@
     color: map-get($colors, ui-light);
     display: block;
     margin-left: 82px;
+    @include phone {
+      font-size: 35px;
+      margin-left: 52px;
+    }
   }
 }

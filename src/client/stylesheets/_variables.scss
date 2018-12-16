@@ -16,3 +16,12 @@ $colors: (
   lightgray: $lightgray,
   green: $green
 );
+
+// mobile responsive design
+$phone: 640px;
+
+@mixin phone {
+  @media (max-width: #{$phone}) {
+    @content;
+  }
+}

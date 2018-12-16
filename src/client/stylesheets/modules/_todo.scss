@@ -3,6 +3,9 @@
   cursor: pointer;
   color: map-get($colors, darkgray);
   font-size: 25px;
+  @include phone {
+    font-size: 20px;
+  }
 
   &--status-complete {
     text-decoration: line-through;
@@ -26,4 +29,7 @@ li {
   column-gap: 3px;
   padding: 10px 20px;
   margin: 5px 0;
+  @include phone {
+    grid-template-columns: 10% 60% 20% 20%;
+  }
 }

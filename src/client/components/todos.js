@@ -100,6 +100,7 @@ const Todos = ({ filterBy, todos, updateTodos, archiveTask }) => {
 
     return todos.map(todo => {
       let filtered = true;
+      // todo is filtered and not shown on the page
 
       if (!filterBy && !todo.archive) {
         filtered = false;

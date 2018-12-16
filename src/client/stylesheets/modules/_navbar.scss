@@ -5,12 +5,19 @@
 
   .nav-text-wrapper {
     margin-left: 35px;
+    @include phone {
+      margin-left: 20px;
+      font-size: 13px;
+    }
   }
 
   &__item {
     text-decoration: none;
     color: map-get($colors, gray);
     margin: 0 20px;
+    @include phone {
+      margin: 0 10px;
+    }
   }
 
   &__item--active {
@@ -21,5 +28,10 @@
   button {
     float:right;
     margin-right: 30px;
+    margin-top: -23px;
+    @include phone {
+      margin-right: 8px;
+      margin-top: -18px;
+    }
   }
 }

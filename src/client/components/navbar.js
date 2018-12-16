@@ -74,8 +74,8 @@ const Navbar = ({ filterBy, onClickFilter, archiveAllCompleted }) => {
         >
           Archived
         </Link>
-        <button onClick={archiveAllCompleted}>Archive all completed</button>
       </div>
+        <button onClick={archiveAllCompleted}>Archive all completed</button>
     </div>
   );
 }
